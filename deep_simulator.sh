@@ -259,7 +259,7 @@ python2 $home/util/genome_preprocess.py \
 	-o $FILENAME/processed_genome \
 	-r 1 \
 	-m $SEP
-source deactivate
+conda deactivate
 echo "Pre-process input genome done!"
 
 # preprocessing, sampling the read
@@ -286,7 +286,7 @@ then
 			-S $RANDOM_SEED \
 			$circular
 	done
-	source deactivate
+	conda deactivate
 else
 	for file_processed_genome in `ls $FILENAME/processed_genome*`; do
 		#statements
@@ -367,7 +367,7 @@ then
 		-F $FILENAME/fast5 \
 		-T $home/util/$fast5_template \
 		$perf_mode $align_out $sig_out
-	source deactivate
+	conda deactivate
 else
 	echo "Running the context-independent pore model..."
 	#-> contect-independent simulator
@@ -383,7 +383,7 @@ else
 		-F $FILENAME/fast5 \
 		-T $home/util/$fast5_template \
 		$perf_mode $align_out $sig_out
-	source deactivate
+	conda deactivate
 fi
 echo "Finished generate the simulated signals and fast5 files!"
 
@@ -414,7 +414,7 @@ else
 	source activate basecall
 	read_fast5_basecaller.py -i $FAST5_DIR -s $FASTQ_DIR \
 		-c r94_450bps_linear.cfg -o fastq -t $THREAD_NUM
-	source deactivate
+	conda deactivate
 fi
 echo "Basecalling finished!"
 
