@@ -295,7 +295,9 @@ else
 	done
 fi
 cat $FILENAME/sampled_read_* >> $FILENAME/sampled_read.fasta
+source activate tensorflow_cdpm
 python $home/util/reindex.py -i $FILENAME/sampled_read.fasta
+conda deactivate
 echo "Finished the preprocessing step!"
 
 # pore model translation
